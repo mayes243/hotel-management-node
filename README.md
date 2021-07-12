@@ -1,4 +1,4 @@
-## npm start | nodemon app
+npm start | nodemon app
 
 ## this page is like that
 first page
