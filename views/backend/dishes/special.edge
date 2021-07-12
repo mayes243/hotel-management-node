@@ -1,0 +1,115 @@
+@layout('layouts.admin')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{{title}}</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    @include('partials.backend.messages')
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card mb-0">
+
+                <div class="card-header">
+                    <h4 class="card-title mb-0">Add {{title}}</h4>
+                </div>
+
+                <div class="card-body">
+                    <form action="/admin/special" method="post">
+                            
+                        <div class="form-row">
+
+                            <div class="col-md-12 mb-3">
+                                <label for="dish">Select Dish</label>
+                                <select class="form-control" id="dish" name="dish">
+                                    <option disabled selected value> -- Select -- </option>
+                                    @each(dish in dishes)
+                                    <option value="{{dish._id}}">{{dish.name}}</option>
+                                    @endeach
+                                </select>
+                            </div>
+                            
+                        </div>
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card mb-0">
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="datatable table table-stripped mb-0">
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @each((item, i) in specialDishes)
+                                <tr>
+                                    <td>{{ (i + 1) }}</td>
+                                    <td>
+                                        <img src="/uploads/{{item.dish.image}}" alt="{{dish.name}}" width="200px">
+                                    </td>
+                                    <td>{{ item.dish.name }}</td>
+                                    <td>{{item.dish.price}}</td>
+                                    <td>{{item.dish.category.title}}</td>
+                                    <td>{{item.createdAt.toDateString()}}</td>
+                                    <td class="text-center">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="/" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <form action="/admin/special/{{ item._id }}?newMethod=DELETE" method="POST">
+                                                    <button class="dropdown-item" type="submit"><i class="fa fa-trash-o m-r-5"></i> Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>	
+
+@endsection

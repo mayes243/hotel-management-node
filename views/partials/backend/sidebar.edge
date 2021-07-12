@@ -1,0 +1,47 @@
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li> 
+                    <a href="/admin/dashboard" class="{{ (title == 'Dashboard') ? 'menu-active-color' : '' }}"><i class="la la-home"></i> <span>Dashboard</span></a>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:"><i class="la la-television"></i> <span> Banner </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a class="{{ (title == 'All Banners') ? 'active' : '' }}" href="/admin/all-banners">All Banners</a></li>
+                        <li><a class="{{ (title == 'Add Banner') ? 'active' : '' }}" href="/admin/add-banner">Add New</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:"><i class="la la-cutlery"></i> <span> Menu </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a class="{{ (title == 'All Dishes') ? 'active' : '' }}" href="/admin/all-dishes">All Dishes</a></li>
+                        <li><a class="{{ (title == 'Category') ? 'active' : '' }}" href="/admin/category">Cateogry</a></li>
+                        <li><a class="{{ (title == 'Special') ? 'active' : '' }}" href="/admin/special">Today's Special</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:"><i class="la la-image"></i> <span> Gallery </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a class="{{ (title == 'Gallery') ? 'active' : '' }}" href="/admin/gallery">View All</a></li>
+                        <li><a class="{{ (title == 'Add Image') ? 'active' : '' }}" href="/admin/add-image">Add New</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="javascript:"><i class="la la-smile-o"></i> <span> Testimonials </span> <span class="menu-arrow"></span></a>
+                    <ul style="display: none;">
+                        <li><a class="{{ (title == 'All Testimonials') ? 'active' : '' }}" href="/admin/all-testimonials">All Testimonials</a></li>
+                        <li><a class="{{ (title == 'Add Testimonial') ? 'active' : '' }}" href="/admin/add-testimonial">Add New</a></li>
+                    </ul>
+                </li>
+                <li> 
+                    <a href="/admin/messages" class="{{ (title == 'Messages') ? 'menu-active-color' : '' }}"><i class="la la-envelope"></i> <span>Messages</span></a>
+                </li>
+                <li> 
+                    <a href="/admin/site-settings" class="{{ (title == 'Site Settings') ? 'menu-active-color' : '' }}"><i class="la la-cogs"></i> <span>Site Settings</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /Sidebar -->

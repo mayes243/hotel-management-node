@@ -1,0 +1,115 @@
+
+@layout('layouts.admin')
+
+@section('title')
+    {{ title }}
+@endsection
+
+@section('content')
+
+    <!-- Page Content -->
+    <div class="content container-fluid">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">{{ title }}</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">{{ title }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        @include('partials.backend.messages')
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Add {{title}}</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <form action="/admin/category" method="post">
+                                
+                            <div class="form-row">
+
+                                <div class="col-md-8 mb-3">
+                                    <label for="categoryTitle">Title</label>
+                                    <input type="text" class="form-control" id="categoryTitle" placeholder="Category Title" name="title">
+                                </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="categoryIndex">Index</label>
+                                    <input type="number" class="form-control" id="categoryIndex" name="index">
+                                </div>
+                                
+                            </div>
+
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+
+                    <div class="card-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped custom-table mb-0 datatable">
+                                <thead>
+                                    <tr>
+                                        <th>S.N.</th>
+                                        <th>Category Name</th>
+                                        <th>Index</th>
+                                        <th class="text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @each((category, i) in allCategory)
+                                    <tr>
+                                        <td>{{ (i + 1) }}</td>
+                                        <td>{{category.title}}</td>
+                                        <td>{{category.index}}</td>
+                                        <td class="text-right">
+                                            <div class="dropdown dropdown-action">
+                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="/admin/category/{{category._id}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                    <form action="/admin/category/{{ category._id }}?newMethod=DELETE" method="POST">
+                                                        <button class="dropdown-item" type="submit"><i class="fa fa-trash-o m-r-5"></i> Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+    <!-- /Page Content -->
+
+@endsection

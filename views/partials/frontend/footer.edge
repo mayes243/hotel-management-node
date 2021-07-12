@@ -1,0 +1,102 @@
+<!----------------------------
+-------Footer-------
+----------------------------->
+
+
+<footer class="footer-main">
+
+    <div class="footer-top">
+
+        <div class="container"> <!-- Container .// -->
+        
+            <div class="row"> <!-- Row .// -->
+            
+                <div class="col-lg-4"> <!-- Col .// -->
+                
+                    @if(site.facebook || site.twitter || site.instagram || site.youtube)
+                    <div class="foot-wrap" data-aos="fade-left">
+                        <h5 class="footer-title">Follow us</h5>
+                        <ul class="footer-social">
+                            @if(site.facebook)
+                            <li><a href="{{site.facebook}}" class="footer-social-link"><i class="fab fa-facebook-f"></i></a></li>
+                            @endif
+                            @if(site.twitter)
+                            <li><a href="{{site.twitter}}" class="footer-social-link"><i class="fab fa-twitter"></i></a></li>
+                            @endif
+                            @if(site.instagram)
+                            <li><a href="{{site.instagram}}" class="footer-social-link"><i class="fab fa-instagram"></i></a></li>
+                            @endif
+                            @if(site.youtube)
+                            <li><a href="{{site.youtube}}" class="footer-social-link"><i class="fab fa-youtube"></i></a></li>
+                            @endif
+                        </ul>
+                    </div>
+                    @endif
+
+                </div> <!-- Col .// -->
+
+                <div class="col-lg-4"> <!-- Col .// -->
+
+                    <div class="foot-wrap footer-box" data-aos="fade-up">
+                        <div class="text-center">
+                            <a class="navbar-brand" href="/">
+                                <img src="/uploads/{{site.logo}}" alt="LOGO">
+                            </a>
+                            <p class="footer-content">{{site.description}}</p>
+                        </div>
+                    </div>
+                
+                </div> <!-- Col .// -->
+
+                <div class="col-lg-4"> <!-- Col .// -->
+
+                    <div class="foot-wrap" data-aos="fade-right">
+                        <h5 class="footer-title">Newsletter</h5>
+
+                        <div class="newsletter">
+                            <form action="newsletter">
+                                <input type="email" placeholder="Subscribe Our Newsletter" class="newsletter-box" required>
+                                <button class="news-submit">Join</button>
+                            </form>
+                        </div>
+                    </div>
+                
+                </div> <!-- Col .// -->
+
+            </div> <!-- Row .// -->
+
+        </div> <!-- Container .// -->
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="to-top">
+            <button id="to-top-btn"><i class="fas fa-arrow-up"></i></button>
+        </div>
+        <div class="container"> <!-- Container .// -->
+
+            <div class="bottom-contact-info">
+                
+                <ul class="foot-contact text-center">
+                    @if(site.address)
+                    <li class="footer-content">{{site.address}}</li>
+                    @endif
+                    @if(site.phone)
+                    <li class="footer-content">{{site.phone}}</li>
+                    @endif
+                    @if(site.email)
+                    <li class="footer-content">{{site.email}}</li>
+                    @endif
+                </ul>
+            
+            </div>
+            <div class="bottom-copyright"><p class="footer-content text-center copyright">Copyright &copy; <script>document.write(new Date().getFullYear());</script>, All Rights Reserved by: <a href="{{site.facebook || 'javascript:'}}" target="_blank">{{site.contactPerson}}</a></p></div>
+        </div> <!-- Container .// -->
+    </div>
+
+</footer>
+
+
+<!----------------------------
+-------Footer-------
+----------------------------->

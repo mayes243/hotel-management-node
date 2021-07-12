@@ -1,0 +1,108 @@
+@layout('layouts.admin')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-centerk">
+            <div class="col">
+                <h3 class="page-title">{{title}}</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/all-dishes">All Dishes</a></li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                </ul>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="/admin/all-dishes" class="btn add-btn" ><i class="fa fa-eye"></i> View All</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    @include('partials.backend.messages')
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Add Form -->
+            <div class="card mb-0">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{title}}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm">
+                            <form action="/admin/edit-dish/{{dish._id}}?newMethod=PUT" method="POST" enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label for="dishImage">Dish Image</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="file" name="image" id="dishImage">
+                                    </div>
+                                    <img src="/uploads/{{dish.image}}" alt="{{dish.name}}" width="200px">
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-8 mb-3">
+                                        <div class="form-group">
+                                            <label for="dishName">Dish Name</label>
+                                            <input type="text" class="form-control" name="name" id="dishName" placeholder="Dish Name" value="{{dish.name || ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="form-group">
+                                            <label for="dishPrice">Price</label>
+                                            <input type="number" class="form-control" name="price" id="dishPrice" placeholder="Dish Price" value="{{dish.price || ''}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="category">Category</label>
+                                        <select class="form-control" id="category" name="category">
+                                            <option disabled selected value="{{dish.category._id || ''}}">{{dish.category.title || ''}}</option>
+                                            @each(category in categories)
+                                            <option value="{{category._id}}">{{category.title}}</option>
+                                            @endeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="country">Country</label>
+                                        <select class="form-control" id="country" name="country">
+                                            <option disabled selected value="{{dish.country || ''}}">{{dish.country || ''}}</option>
+                                            @each(country in countries)
+                                            <option value="{{country.name}}">{{country.name}}</option>
+                                            @endeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <textarea rows="4" id="description" class="form-control" name="description" placeholder="Dish Description">{{dish.description || ''}}</textarea>
+                                </div>
+
+                                <div class="text-right">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Add Form -->
+
+        </div>
+    </div>
+
+</div>	
+
+@endsection

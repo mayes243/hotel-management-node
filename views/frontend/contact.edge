@@ -1,0 +1,86 @@
+@layout('layouts.frontend')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<!----------------------
+---Breadcrumb--------
+----------------------->
+
+<section class="bread-crumb bg-bread long-banner" style="background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/frontend/img/bg-slider1.jpg);">
+    <div class="container"> <!-- Container .// -->
+        <h3 class="bread-crumb-title text-center">{{ title }}</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb d-flex justify-content-center">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+            </ol>
+        </nav>
+    </div> <!-- Container .// -->
+</section>
+
+<!----------------------
+---Breadcrumb--------
+----------------------->
+
+<!----------------------------
+-------Contact-Form-------
+----------------------------->
+
+<section class="contact-form-section" style="background: url(/frontend/img/contact.png);" id="contact">
+
+    <div class="row no-gutters"> <!-- Row .// -->
+
+    <div class="col-lg-7 offset-lg-1"> <!-- Col .// -->
+
+        <div class="contact-form-main">
+
+            <div class="section-heading-wrap u-margin-bottom-medium">
+                <p class="sub-heading" data-aos="fade-left">Contact Us</p>
+                <h3 class="main-heading" data-aos="fade-right">Get In Touch</h3>
+            </div>
+
+            @if(success_message.length > 0)
+            <!-- Success Message .// -->
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{success_message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Success Message .// -->
+            @endif
+
+            <div class="contact-form-wrapper" data-aos="fade-up">
+                <form action="/contact" method="POST">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6">
+                            <input type="text" name="name" placeholder="Full Name *" required>
+                            <input type="email" name="email" placeholder="Email Address *" required>
+                            <input type="text" name="phone" placeholder="Phone Number *" required>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+                            <textarea name="content" id="message" placeholder="Message..."></textarea>
+                        </div>
+                    </div>
+                    <button class="button-primary w-100">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div> <!-- Col .// -->
+    
+    </div> <!-- Row .// -->
+
+</section>
+
+<!----------------------------
+-------Contact-Form-------
+----------------------------->
+
+@endsection

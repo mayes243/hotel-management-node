@@ -1,0 +1,15 @@
+.navbar-brand{
+
+    img{
+        height: 3rem;
+        object-fit: contain;
+    }
+}
+
+.special-padding{
+    padding: 15rem 0 6rem;
+}
+
+.bg-primary{
+    background: $color-primary !important;
+}

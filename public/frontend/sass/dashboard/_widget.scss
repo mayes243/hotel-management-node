@@ -1,0 +1,103 @@
+.wig{
+    
+    &:not(:last-child){
+        margin-bottom: 2rem;
+    }
+
+    &-title{
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: inherit;
+
+        & i{
+            margin-right: .5rem;
+        }
+    }
+
+    &-toggler{
+        color: #ddd;
+        -webkit-transition: -webkit-transform .3s ease;
+        transition: -webkit-transform .3s ease;
+        transition: transform .3s ease;
+        transition: transform .3s ease, -webkit-transform .3s ease;
+        cursor: pointer;
+        -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+
+    &-button{
+        display: inline-block;
+        padding: .8rem 1.3rem;
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+        background: $color-primary;
+        border: 1px solid $color-primary;
+        text-align: center;
+        color: $color-white;
+
+        &:hover{
+            background:  transparent;
+            color: $color-primary;
+        }
+    }
+
+    &.active{
+
+        & .wig-toggler{
+            -webkit-transform: rotate(180deg);
+                    transform: rotate(180deg);
+        }
+    }
+
+    & .list-group-item{
+        padding: 0;
+
+        & .list-group-link{
+            display: block;
+            padding: 1.3rem 1.5rem;
+            font-size: 1.3rem;
+            color: $color-black;
+
+            & span{
+                color: $color-black-light;
+            }
+
+            &:hover{
+                background: $color-primary;
+                color: $color-white;
+
+                & span{
+                    color: $color-white;
+                }
+            }
+        }
+    }
+}
+
+.user-profile-wrapper{
+    text-align: center;
+    position: relative;
+
+    & img{
+        @include size(7rem, 7rem);
+        -o-object-fit: cover;
+           object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid $color-border;
+    }
+
+    & h3{
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 1rem 0 .5rem;
+        color: $color-black;
+    }
+
+    & p{
+        font-size: 1.2rem;
+        width: 80%;
+        margin: 0 auto;
+        color: $color-black;
+    }
+}

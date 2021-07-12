@@ -1,0 +1,142 @@
+@layout('layouts.admin')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+    <div class="content container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">{{title}}</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">{{title}}</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        @include('partials.backend.messages')
+
+        <!-- /Page Header -->
+        <form action="/admin/site-settings/{{siteSettings._id}}?newMethod=PUT" method="POST" enctype="multipart/form-data">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">{{title}} Details</h4>
+                        </div>
+                        <div class="card-body">
+                                
+                            <div class="form-group">
+                                <label for="site_title">Site Title</label>
+                                <input type="text" class="form-control" name="title" id="site_title" value="{{siteSettings.title || ''}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="site_subtitle">Site Sub Title</label>
+                                <input type="text" class="form-control" id="subTitle" name="subTitle" value="{{siteSettings.subTitle || ''}}">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="contact_person">Contact Person</label>
+                                <input type="text" class="form-control" name="contactPerson" id="contact_person" value="{{siteSettings.contactPerson || ''}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" name="email" id="email" value="{{siteSettings.email || ''}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" name="phone" id="phone" value="{{siteSettings.phone || ''}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" name="address" id="address" value="{{siteSettings.address || ''}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label id="description">About us</label>
+                                <textarea rows="5" id="description" class="form-control" name="description" placeholder="Abour your Business">{{siteSettings.description || ''}}</textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Social Settings / Images</h4>
+                        </div>
+                        <div class="card-body">
+
+
+                            <div class="form-group">
+                                <label for="logo">Logo</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="file" name="logo" id="logo">
+                                </div>
+                                @if(siteSettings.logo)
+                                <img src="/uploads/{{siteSettings.logo}}" alt="Photo" width="200px">
+                                @endif
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="favicon">FavIcon</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="file" name="favicon" id="favicon">
+                                </div>
+                                @if(siteSettings.favicon)
+                                <img src="/uploads/{{siteSettings.favicon}}" alt="Image" width="50px">
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fb_link">Facebook Link</label>
+                                <input type="text" class="form-control" name="facebook" id="fb_link" value="{{siteSettings.facebook || ''}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="twitter_link">Twitter Link</label>
+                                <input type="text" class="form-control" name="twitter" id="twitter_link" value="{{siteSettings.twitter || ''}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="instagram_link">Instagram Link</label>
+                                <input type="text" class="form-control" name="instagram" id="instagram_link" value="{{siteSettings.instagram || ''}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="youtube_link">Youtube Link</label>
+                                <input type="text" class="form-control" name="youtube" id="youtube_link" value="{{siteSettings.youtube || ''}}">
+                            </div>
+
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-info">Update</button>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+
+
+    </div>
+
+@endsection

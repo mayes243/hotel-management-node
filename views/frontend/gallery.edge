@@ -1,0 +1,37 @@
+@layout('layouts.frontend')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<!----------------------------
+-------Gallery-Section-------
+----------------------------->
+
+<section class="gallery" id="gallery">
+    <div class="section-heading-wrap bg-para" style="background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(/frontend/img/gallery-back.jpg);">
+        <p class="sub-heading" data-aos="fade-left">Image</p>
+        <h3 class="main-heading color-white text-uppercase" data-aos="fade-right">Gallery</h3>
+    </div>
+
+    <div class="row no-gutters"> <!-- Row .// -->
+
+        @each(item in allImages)
+        <div class="col-lg-3 col-sm-6 col-xs-12"> <!-- COL .// -->
+            <div class="gallery-img-wrap">
+                <a href="/uploads/{{item.image}}" data-lightbox="gallery" data-title="{{item.title}}"><img src="/uploads/{{item.image}}" alt="{{item.title}}"></a>
+            </div>
+        </div> <!-- COL .// -->
+        @endeach
+        
+    </div> <!-- Row .// -->
+
+</section>
+
+<!----------------------------
+-------Gallery-Section-------
+----------------------------->
+
+@endsection

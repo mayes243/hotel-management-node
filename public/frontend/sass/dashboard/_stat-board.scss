@@ -1,0 +1,83 @@
+.stats-board{
+    width: 100%;
+    padding: 4rem 2rem 1rem;
+    position: relative;
+    background: $color-white;
+    border-top: 3px solid transparent;
+
+    &:hover{
+        border-color: $color-primary;
+    }
+
+    & .content{
+        border-bottom: 2px solid #ccc;
+
+        &.blue{
+            border-color: blue;
+        }
+
+        &.green{
+            border-color: green;
+        }
+
+        &.red{
+            border-color: lightcoral;
+        }
+
+        &.orange{
+            border-color: orange;
+        }
+    }
+
+    & .count{
+        font-size: 3rem;
+        font-family: sans-serif;
+        line-height: 1;
+        color: $color-primary;
+    }
+
+    & .title{
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: $color-light;
+        margin: .3rem 0 .6rem;
+    }
+
+    & .back-icon{
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+
+        & i{
+            font-size: 6rem;
+            color: rgba($color-black, .3);
+        }
+    }
+}
+
+.table-image-wrap{
+
+    img{
+        @include size(4rem, 6rem);
+        -o-object-fit: cover;
+           object-fit: cover;
+    }
+}
+
+.status-color{
+    font-size: 2.2rem;
+
+    &.pending{
+        color: red;
+    }
+
+    &.approved{
+        color: green;
+    }
+
+    i{
+        font-size: inherit;
+        color: inherit;
+    }
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <title>
+            @!section('title')
+            | Hotel management system
+        </title>
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="/backend/img/favicon.png">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/backend/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="/backend/css/font-awesome.min.css">
+		
+		<!-- Lineawesome CSS -->
+		<link rel="stylesheet" href="/backend/css/line-awesome.min.css">
+		
+		<!-- Summernote CSS -->
+		<link rel="stylesheet" href="/backend/plugins/summernote/dist/summernote-bs4.css">
+		
+		<!-- Chart CSS -->
+		<link rel="stylesheet" href="/backend/plugins/morris/morris.css">
+		
+		<!-- Datatable CSS -->
+		<link rel="stylesheet" href="/backend/css/dataTables.bootstrap4.min.css">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="/backend/css/style.css">
+		
+		@!section('styles')
+		
+    </head>
+	
+    <body>
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		    <!-- Header -->
+			@include('partials.backend.header')
+			
+			<!-- Sidebar -->
+            @include('partials.backend.sidebar')
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				@!section('content')
+
+            </div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="/backend/js/jquery-3.2.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="/backend/js/popper.min.js"></script>
+        <script src="/backend/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+		<script src="/backend/js/jquery.slimscroll.min.js"></script>
+
+		<!-- Summernote JS -->
+		<script src="/backend/plugins/summernote/dist/summernote-bs4.min.js"></script>
+		
+		<!-- Chart JS -->
+		<script src="/backend/plugins/morris/morris.min.js"></script>
+		<script src="/backend/plugins/raphael/raphael.min.js"></script>
+		<script src="/backend/js/chart.js"></script>
+
+		<!-- Datatable JS -->
+		<script src="/backend/js/jquery.dataTables.min.js"></script>
+		<script src="/backend/js/dataTables.bootstrap4.min.js"></script>
+
+		@!section('scripts')
+
+		<script>
+			$(document).ready(function(){
+				setTimeout(function(){
+					$('.alert').slideUp();
+				}, 2000);
+			});
+		</script>
+		
+		<!-- Custom JS -->
+		<script src="/backend/js/app.js"></script>
+		
+    </body>
+</html>

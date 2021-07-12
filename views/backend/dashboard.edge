@@ -1,0 +1,91 @@
+@layout('layouts.admin')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+    <!-- Page Content -->
+    <div class="content container-fluid">
+                    
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">Welcome Admin!</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active">{{title}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        @include('partials.backend.messages')
+
+        <div class="row"> <!-- Row .// -->
+            <div class="col-sm-12">
+                <div class="card mb-0">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Recent Orders</h5>
+                    </div>
+                    <div class="card-body">
+    
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>S.No.</th>
+                                        <th>Dish</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Ordered By</th>
+                                        <th>Contact No:</th>
+                                        <th>Order Date</th>
+                                        <th>Order Status</th>
+                                        <th>Reject Order | Accept Order</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @each((order, i) in allOrders)
+                                    <tr>
+                                        <td>{{ (i + 1) }}</td>
+                                        <td>
+                                            <img src="/uploads/{{order.dish.image}}" alt="{{order.user.name}}" width="200px">
+                                        </td>
+                                        <td>{{order.dish.name }}</td>
+                                        <td>{{order.dish.price}}</td>
+                                        <td>{{order.user.name}}</td>
+                                        <td>{{order.user.contact}}</td>
+                                        <td>{{order.createdAt.toDateString()}}</td>
+                                        <td>{{order.status}}</td>
+                                        <td class="actions">
+
+                                           <div class="btn-group ">
+                                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Order Action
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item btn btn-info" href="/admin/accept/order/{{order._id}}">Accept</a>
+                                            <a class="dropdown-item btn btn-danger" href="">Reject</a>
+                                        </div>
+                                        </div>
+                                    
+                                    
+                                        </td>
+                                    </tr>
+                                    @endeach
+    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Row .// -->
+
+    </div>
+    <!-- /Page Content -->
+
+@endsection

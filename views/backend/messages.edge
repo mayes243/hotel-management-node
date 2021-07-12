@@ -1,0 +1,75 @@
+@layout('layouts.admin')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{{title}}</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    @include('partials.backend.messages')
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card mb-0">
+                <div class="card-body">
+
+                    <div class="table-responsive">
+                        <table class="datatable table table-stripped mb-0">
+                            <thead>
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Message</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @each((message, i) in allMessages)
+                                <tr>
+                                    <td>{{ (i + 1) }}</td>
+                                    <td>{{ message.name }}</td>
+                                    <td>{{ message.email }}</td>
+                                    <td>{{ message.phone }}</td>
+                                    <td>{{ message.content }}</td>
+                                    <td class="text-center">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="/" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <form action="/admin/message/{{ message._id }}?newMethod=DELETE" method="POST">
+                                                    <button class="dropdown-item" type="submit"><i class="fa fa-trash-o m-r-5"></i> Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>	
+
+@endsection

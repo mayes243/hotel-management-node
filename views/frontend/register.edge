@@ -1,0 +1,103 @@
+@layout('layouts.frontend')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('styles')
+<style>
+    /* #register-country{
+        display: block;
+        width: 100%;
+    } */
+</style>
+@endsection
+
+@section('content')
+
+<!----------------------
+---Login-Main--------
+----------------------->
+
+<section class="special-padding bg-bread long-banner" style="background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/frontend/img/bg-slider1.jpg);">
+    <div class="container"> <!-- Container .// -->
+        <div class="d-flex align-items-center justify-content-center">
+
+            <div class="register-main"> <!-- Register-Card .// -->
+
+                <div class="banner-wrap clearfix color-white">
+                    <h3 class="register-welcome float-left">Sign Up / Register</h3>
+                    <p class="register-btn-label float-right">Already Registered ? <a href="/login">Login</a></p>
+                </div>
+
+                <div class="register-body styled-form bord-bottom">
+                    <!-- Register .// --->
+                    <form action="/register" method="POST">
+
+                        <label for="register-fullname">Full Name *</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" id="register-fullname" class="form-control" name="name" required>
+                        </div>
+
+                        <label for="register-email">Email Address *</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            </div>
+                            <input type="email" id="register-email" class="form-control" name="email" required>
+                        </div>
+
+                        <label for="register-contactnumber">Contact Number *</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            </div>
+                            <input type="text" id="register-contactnumber" class="form-control" name="contact" aria-label="Username" aria-describedby="basic-addon1" required>
+                        </div>
+
+                        <label for="register-address">Address</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
+                            </div>
+                            <input type="text" id="register-address" class="form-control" placeholder="Current Address" name="address" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="register-country">Country *</label>
+                            <select name="country" id="register-country" class="form-control" required>
+                                <option selected disabled value> -- Select -- </option>
+                                @each(country in countries)
+                                    <option value="{{country.name}}">{{country.name}}</option>
+                                @endeach
+                            </select>
+                        </div>
+
+                        <label for="register-password">Password *</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" id="register-password" class="form-control" name="password" required>
+                        </div>
+
+                        <div class="mt-4">
+                            <button class="btn-main btn-primary btn-large mt-0" type="submit"><i class="fas fa-user-plus"></i> Register</button>
+                        </div>
+                    </form>
+                    <!-- Register .// --->
+                </div>
+            </div> <!-- Register-Card .// -->
+
+        </div>
+    </div> <!-- Container .// -->
+</section>
+
+<!----------------------
+---Login-Main--------
+----------------------->
+
+@endsection

@@ -1,0 +1,78 @@
+@layout('layouts.admin')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+    <!-- Page Content -->
+    <div class="content container-fluid">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3 class="page-title">Profile Settings</h3>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Page Header -->
+
+                @include('partials.backend.messages')
+
+                <form method="POST" action="/admin/profile/{{adminDetail._id}}?newMethod=PUT" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Name <span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" value="{{(adminDetail.name) ? adminDetail.name : ''}}" name="name">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Email Address <span class="text-danger">*</span></label>
+                                <input class="form-control" value="{{(adminDetail.email) ? adminDetail.email : ''}}" type="email" name="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input class="form-control" value="{{(adminDetail.address) ? adminDetail.address : ''}}" type="text" name="address">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Image</label>
+                                <input class="form-control" name="singleImage" type="file">
+                            </div>
+                            @if(adminDetail.image)
+                                <img src="/uploads/{{adminDetail.image}}" alt="{{adminDetail.name}}" width="200px">
+                            @endif
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input class="form-control" value="{{(adminDetail.phone) ? adminDetail.phone : ''}}" type="text" name="phone">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="submit-section">
+                        <button class="btn btn-info submit-btn">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Content -->
+
+@endsection

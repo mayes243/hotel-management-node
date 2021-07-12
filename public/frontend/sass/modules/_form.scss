@@ -1,0 +1,71 @@
+.styled-form{
+
+    
+
+    .form-control{
+        background: $color-white;
+        outline: none !important;
+        border: 2px solid #eee;
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        height: 4rem;
+        padding-left: 1rem;
+        color: #777;
+
+        &:focus{
+            box-shadow: none;
+        }
+    }
+
+    textarea.form-control{
+        padding-top: 1rem;
+    }
+
+    
+
+    .input-group{
+
+        &-text{
+            background: $color-white;
+            height: 4rem;
+            line-height: 4rem;
+            border: 2px solid #eee;
+            border-right: none;
+            color: $color-primary;
+            font-size: 1.6rem;
+        }
+
+        .form-control{
+            border-left: none;
+        }
+    }
+
+    label{
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        color: $color-primary;
+    }
+}
+
+.styled-form .form-control::placeholder{
+    color: #999;
+}
+
+.styled-form textarea.form-control{
+    height: 15rem;
+    max-height: 15rem;
+}
+
+@media only screen and (max-width: 800px){
+    .contact-main iframe{
+        position: relative;
+        height: 40rem;
+    }
+}
+
+.input-group{
+    .form-control{
+        margin-bottom: 0;
+    }
+}
+

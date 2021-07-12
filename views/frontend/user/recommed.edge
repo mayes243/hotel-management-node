@@ -1,0 +1,47 @@
+@layout('layouts.frontend')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<!----------------------
+---Breadcrumb--------
+----------------------->
+
+<section class="bread-crumb bg-bread long-banner" style="background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/frontend/img/bg-slider1.jpg);">
+    <div class="container"> <!-- Container .// -->
+        <h3 class="bread-crumb-title text-center">{{ title }}</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb d-flex justify-content-center">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+            </ol>
+        </nav>
+    </div> <!-- Container .// -->
+</section>
+
+<!----------------------
+---Breadcrumb--------
+----------------------->
+
+<!----------------------------
+-------Menu-Section-------
+----------------------------->
+
+<section class="menu-main common-padding" id="menu">
+    <div class="container"> <!-- Container .// -->
+
+        <div class="section-heading-wrap">
+            <p class="sub-heading" data-aos="fade-left">Fresh, Tasty Meals</p>
+            <h3 class="main-heading u-margin-bottom-small" data-aos="fade-right">Recommended For You !</h3>
+            <p class="section-subtitle text-center normal-content" data-aos="fade-up">Steak In has the perfect place to enjoy fine food and great cocktails with excellent service, in comfortable atmospheric surroundings. We have a soft dining room, combined with an open kitchen, coffee take out bar and alovely awesome on site coffee roastery.</p>
+        </div>
+
+    </div> <!-- Container .// -->
+
+
+
+@endsection

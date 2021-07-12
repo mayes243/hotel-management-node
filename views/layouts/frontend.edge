@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @!section('meta')
+    <title>
+        @!section('title')
+        | {{site.title}}
+    </title>
+    <link rel="icon" href="/uploads/{{site.favicon}}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/frontend/css/bootstrap.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,900|Roboto:300,300i,400,400i,500,700,900|Ruthie" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="/frontend/css/slick.css"> 
+    <link rel="stylesheet" href="/frontend/include/lightbox/css/lightbox.min.css">
+
+    <link rel="stylesheet" href="/frontend/css/aos.css">
+
+    <link rel="stylesheet" href="/frontend/css/v4-shims.css">
+    <link rel="stylesheet" href="/frontend/css/data-table.min.css">
+
+    <link rel="stylesheet" href="/frontend/css/custom.css">
+    <link rel="stylesheet" href="/frontend/css/new.css">
+    @!section('styles')
+</head>
+<body>
+
+    @include('partials/frontend/header')
+
+    @!section('content')
+
+    @include('partials/frontend/footer')
+
+<script src="/frontend/js/jquery.min.js" ></script>
+<script src="/frontend/js/bootstrap.min.js"></script>
+<script src="/frontend/js/bootstrap.bundle.min.js"></script>
+<script src="/frontend/js/slick.js"></script>
+<script src="/frontend/js/isotope.pkgd.min.js"></script>
+<script src="/frontend/js/lazysizes.min.js"></script>
+<script src="/frontend/js/data-table.min.js"></script>
+<script src="/frontend/include/lightbox/js/lightbox.min.js"></script>
+<script src="/frontend/js/aos.js"></script>
+
+<script>
+    AOS.init({
+        duration: 1000,
+        easing: 'linear',
+        delay: 100,
+        once: true,
+    });
+</script>
+@!section('scripts')
+<script src="/frontend/js/custom.js"></script>
+</body>
+</html>

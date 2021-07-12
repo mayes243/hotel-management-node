@@ -1,0 +1,31 @@
+<div class="wig card" id="wig1"> <!-- Widget Card .// -->
+    <div class="card-header bg-primary color-white clearfix">
+        <p class="wig-title float-left"><i class="fas fa-user"></i> Your Info</p>
+        <p class="wig-toggler float-right" data-pannel="wig1"><i class="fas fa-chevron-up"></i></p>
+    </div>
+    <div class="card-body wig-content">
+        <div class="user-profile-wrapper"> <!-- User-ProfilePic .// -->
+            @if(user.image)
+            <img data-src="/uploads/{{user.image}}" class="lazyload" alt="Profile-Image">
+            @endif
+            <h3>{{user.name}}</h3>
+            <p>{{user.email}}</p>
+            <p>{{user.contact}}</p>
+            <p>{{user.address}}, {{user.country}}</p>
+        </div> <!-- User-ProfilePic .// -->
+    </div>
+    <div class="card-footer">
+        <a href="/user/profile" class="wig-button w-100"><i class="fas fa-pen"></i> Update</a>
+    </div>
+</div> <!-- Widget Card .// -->
+
+<div class="wig card" id="wig2"> <!-- Widget Card .// -->
+    <div class="card-header bg-primary color-white clearfix">
+        <p class="wig-title float-left"><i class="fas fa-bookmark"></i> Links</p>
+        <p class="wig-toggler float-right" data-pannel="wig2"><i class="fas fa-chevron-up"></i></p>
+    </div>
+    <ul class="list-unstyled list-group list-group-flush wig-content">
+        <li class="list-group-item"><a href="/user/dashboard" class="list-group-link">Dashboard <span class="float-right"><i class="fas fa-chart-line"></i></span></a></li>
+        <li class="list-group-item"><a href="/logout" class="list-group-link">Logout <span class="float-right"><i class="fas fa-sign-out-alt"></i></span></a></li>
+    </ul>
+</div> <!-- Widget Card .// -->

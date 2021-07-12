@@ -1,0 +1,242 @@
+@layout('layouts.frontend')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<div class="body-padding"> <!-- Body Padding .// -->
+
+<!----------------------------
+-------Landing-Section-------
+----------------------------->
+
+<section class="hero-main" id="landing">
+
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            @each((banner, i) in allBanners)
+            <li data-target="#carouselExampleIndicators" data-slide-to="{{i}}" class="{{(i == 0) ? 'active' : ''}}"></li>
+            @endeach
+        </ol>
+        <div class="carousel-inner">
+            
+            @each((banner, i) in allBanners)
+            <div class="carousel-item {{ (i == 0) ? 'active' : '' }} bg-para" style="background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('/uploads/{{banner.image}}')">
+                <div class="carousel-caption d-md-block">
+                    <div class="hero-icon u-margin-bottom-small">
+                        <img src="/frontend/img/hero-icon.png" alt="Icon">
+                    </div>
+
+                    <p class="style-text">{{banner.subTitle}}</p>
+                    <h5 class="hero-title">{{banner.title}}</h5>
+                    <p class="hero-content text-center">{{banner.content}}</p>
+                </div>
+            </div>
+            @endeach
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+</section>
+
+<!----------------------------
+-------Landing-Section-------
+----------------------------->
+
+</div> <!-- Body Padding .// -->
+
+<!----------------------------
+-------About-Section-------
+----------------------------->
+
+<section class="about common-padding" id="about">
+
+    <div class="container"> <!-- Container .// -->
+        <div class="row"> <!-- Row .// -->
+            <div class="col-lg-6"> <!-- Col .// -->
+
+            <div class="h-100 d-flex align-items-center">
+                <div class="about-content-wrap" data-aos="fade-right">
+                    <div class="section-heading-wrap">
+                        <p class="sub-heading">Hello There</p>
+                        <h3 class="main-heading">We Are Online Cafe!</h3>
+                    </div>
+
+                    <p class="normal-content text-center">{{site.description}}</p>
+                    <div class="button-wrap u-margin-top-medium text-center">
+                        <a href="#" class="button-primary">View Menu</a>
+                    </div>
+                </div>
+            </div>
+            </div> <!-- Col .// -->
+            <div class="col-lg-6"> <!-- Col .// -->
+
+                <div class="about-img-wrap">
+                    <div class="about-small-img" data-aos="fade-down">
+                        <img src="/frontend/img/about-1.jpg" alt="Image">
+                    </div>
+
+                    <div class="about-big-img" data-aos="fade-up">
+                        <img src="/frontend/img/about-2.jpg" alt="Image">
+                    </div>
+                </div>
+            
+            </div> <!-- Col .// -->
+        </div> <!-- Row .// -->
+    </div> <!-- Container .// -->
+
+</section>
+
+<!----------------------------
+-------About-Section-------
+----------------------------->
+
+@if(specialMenu.length > 0)
+<!----------------------------
+-------Special-Dish-------
+----------------------------->
+
+<section class="special-dish common-padding bg-para" style="background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/frontend/img/bg-slider3.jpg)">
+    <div class="container"> <!-- Container .// -->
+        <div class="main-box all-theme-padding">
+
+            <div class="section-heading-wrap u-margin-bottom-medium">
+                <p class="sub-heading" data-aos="fade-left">Delicious Recipes</p>
+                <h3 class="main-heading" data-aos="fade-right">Today's Special Dishes</h3>
+            </div>
+
+            <div class="row"> <!-- Row .// -->
+
+                @each(item in specialMenu)
+                <div class="col-md-6"> <!-- Col .// -->
+                    <div class="special-wrapper" data-mh="special" data-aos="fade-down-right">
+
+                        <a href="/uploads/{{item.dish.image}}" data-lightbox="special1" data-title="{{item.dish.name}}">
+                            <div class="special-img-wrap img-hover">
+                                <img src="/uploads/{{item.dish.image}}" alt="{{item.dish.name}}">
+                                <div class="img-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="special-content-wrap">
+                            <div class="name-price clearfix">
+                                <h4 class="dish-name float-left">{{item.dish.name}}</h4>
+                                <p class="dish-price float-right">NPR {{item.dish.price}}</p>
+                            </div>
+
+                            <p class="dish-detail">{{item.dish.description}}</p>
+                            <div class="pt-2">
+                                <form action="/user/order/{{item.dish._id}}/{{user._id}}" method="POST">
+                                    <button class="btn-main btn-primary btn-sm">Order</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> <!-- Col .// -->
+                @endeach
+
+            </div> <!-- Row .// -->
+
+            <div class="button-wrap u-margin-top-medium text-center">
+                <a href="/menu" class="button-primary">Discover Full Menu</a>
+            </div>
+
+        </div>
+    </div> <!-- Container .// -->
+</section>
+
+<!----------------------------
+-------Special-Dish-------
+----------------------------->
+@endif
+
+
+@if(allTestimonials.length > 0)
+<!----------------------------
+-------Testimonials-------
+----------------------------->
+
+<section class="testimonials" id="testimonials">
+
+        <div class="row no-gutters"> <!-- Row .// -->
+            
+            <div class="col-lg-4"> <!-- Col .// -->
+
+                <div class="testimonial-background bg-para" style="background: url(/frontend/img/testimonials-new.jpg);">
+                </div>
+
+            </div> <!-- Col .// -->
+
+            <div class="col-lg-8"> <!-- Col .// -->
+
+                <div class="testimonial-right">
+
+                    <div class="common-padding">
+
+                        <div class="section-heading-wrap u-margin-bottom-medium">
+                            <p class="sub-heading" data-aos="fade-left">Review</p>
+                            <h3 class="main-heading" data-aos="fade-right">Testimonials</h3>
+                        </div>
+
+                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+
+                                @each((testimonial, i) in allTestimonials)
+                                <div class="carousel-item {{(i == 0) ? 'active' : ''}}">
+                                     <!-- Testimonials .// -->
+                                    <div class="user-name-img u-margin-bottom-medium d-flex align-items-center justify-content-center" data-aos="fade-down">
+                                        <div class="user-img-wrapper">
+                                            <img src="/uploads/{{testimonial.image}}" alt="{{testimonial.name}}">
+                                        </div>
+
+                                        <div class="user-detail">
+                                            <h4 class="user-name">{{testimonial.name}}</h4>
+                                            <p class="user-position">{{testimonial.position}}</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="review-wrapper" data-aos="fade-up">
+                                        {{{testimonial.review}}}
+                                    </div> <!-- Testimonials .// -->
+
+                                </div>
+                                @endeach
+
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div> <!-- Col .// -->
+
+        </div> <!-- Row .// -->
+
+
+</section>
+
+<!----------------------------
+-------Testimonials-------
+----------------------------->
+@endif
+
+@endsection

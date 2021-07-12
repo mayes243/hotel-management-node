@@ -1,0 +1,56 @@
+@layout('layouts.admin')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{{title}}</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                </ul>
+            </div>
+            <div class="col-auto float-right ml-auto">
+                <a href="/admin/add-image" class="btn add-btn" ><i class="fa fa-plus"></i> Add Image</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    @include('partials.backend.messages')
+    
+    <div class="row">
+
+        @each(item in allImages)
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+            <div class="card flex-fill">
+                <img alt="{{item.title}}" src="/uploads/{{item.image}}" class="card-img-top">
+                <div class="card-header text-center">
+                    <h5 class="card-title mb-0">{{item.title}}</h5>
+                </div>
+                <div class="card-footer clearfix">
+                    <ul class="list-unstyled d-flex justify-content-end mb-0">
+                        <li class="ml-2">
+                            <form action="/admin/image/{{item._id}}?newMethod=DELETE" method="POST">
+                                <button class="btn btn-sm btn-danger" type="submit"><i class="fa fa-trash-o"></i></button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @endeach
+
+    </div>
+
+</div>	
+
+@endsection

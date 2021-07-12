@@ -1,0 +1,89 @@
+@layout('layouts.admin')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-centerk">
+            <div class="col">
+                <h3 class="page-title">{{title}}</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/admin/all-banners">All Banners</a></li>
+                    <li class="breadcrumb-item active">{{title}}</li>
+                </ul>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="/admin/all-banners" class="btn add-btn" ><i class="fa fa-eye"></i> View All</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    @include('partials.backend.messages')
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- Add Form -->
+            <div class="card mb-0">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{title}}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm">
+                            <form action="/admin/banner/{{banner._id}}?newMethod=PUT" method="POST" enctype="multipart/form-data">
+
+                                <div class="form-group">
+                                    <label for="image">Image</label>
+                                    <div class="input-group">
+                                        <input class="form-control" type="file" name="image" id="image">
+                                    </div>
+                                    @if(banner.image)
+                                    <img src="/uploads/{{banner.image}}" alt="{{banner.title}}" width="200px">
+                                    @endif
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="title">Title</label>
+                                            <input type="text" class="form-control" name="title" id="title" placeholder="Banner Title" value="{{banner.title || ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="subTitle">Sub Title</label>
+                                            <input type="text" class="form-control" name="subTitle" id="subTitle" placeholder="Banner Sub Title" value="{{banner.subTitle || ''}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Content</label>
+                                    <textarea rows="4" id="description" class="form-control" name="content" placeholder="Banner Content">{{banner.content || ''}}</textarea>
+                                </div>
+
+                                <div class="text-right">
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Add Form -->
+
+        </div>
+    </div>
+
+</div>	
+
+@endsection

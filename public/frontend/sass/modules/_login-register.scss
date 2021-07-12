@@ -1,0 +1,180 @@
+.register-main{
+    width: 45%;
+    min-height: 10rem;
+    border-radius: 3px;
+    background: #fff;
+    box-shadow: 0px 6px 20px rgba(0,0,0,.25);
+    overflow: hidden;
+}
+
+.banner-wrap{
+    width: 100%;
+    background: $color-primary;
+
+    &.clearfix{
+
+        .register-welcome{
+            line-height: 1.9;
+        }
+    }
+}
+
+.banner-wrap h5{
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.register-body,
+.register-main .banner-wrap{
+    padding: 1.5rem;
+}
+
+.register-welcome{
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.bord-bottom{
+    border-bottom: 1px solid #ddd !important;
+}
+
+.register-btn-label{
+    font-size: 1rem;
+    font-weight: 300;
+    color: $color-white;
+}
+
+.register-btn-label{
+
+    button,
+    a{
+        display: inline-block;
+        text-transform: uppercase;
+        font-weight: 600;
+        border: none;
+        margin-left: .5rem;
+        padding: .7rem 1.5rem;
+        border-radius: 3px;
+        background: #fff;
+        color: $color-primary;
+    }
+    
+}
+
+.login-submit{
+    color: $color-white;
+    padding: .5rem 1.5rem;
+    background: $color-primary;
+    border: 1px solid $color-primary;
+    border-radius: 3px;
+    transition: all .5s;
+}
+
+.login-submit i{
+    margin-right: .5rem;
+}
+
+.login-submit:hover{
+    background: transparent;
+    color: $color-primary;
+}
+
+.forgot-password{
+    color: #777;
+    font-weight: 300;
+    line-height: 2.9;
+    font-size: 1.3rem;
+}
+
+.forgot-password span{
+    color: $color-primary;
+    font-weight: 400;
+    border-bottom: 1px solid currentColor;
+    cursor: pointer;
+}
+
+.register-social{
+    margin-top: .5rem;
+    margin-bottom: 0 !important;
+}
+
+.register-social li{
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.register-social li:not(:last-child){
+    margin-right: 1rem;
+}
+
+.fb-btn{
+    background-color: #4267b2 !important;
+    border: 1px solid #4267b2 !important;
+    color: $color-white !important;
+}
+
+.google-btn{
+    background-color: #DD4B39 !important;
+    border: 1px solid #DD4B39 !important;
+    color: $color-white !important;
+}
+
+@media only screen and (max-width: 1150px){
+    .register-main{
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .register-main{
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .register-main{
+        width: 90%;
+    }
+}
+
+#reset{
+    display: none;
+}
+
+.btn-main{
+    display: inline-block;
+    font-size: 1.3rem;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid transparent;
+
+    &.btn-white{
+        background: $color-white;
+        color: $color-black;
+        border-color: $color-white;
+
+        &:hover{
+            background: transparent;
+            border-color: $color-white;
+            color: $color-white;
+        }
+    }
+
+    &.btn-primary{
+        background: $color-primary;
+        color: $color-white;
+        border-color: $color-primary;
+
+        &:hover{
+            background: transparent;
+            border-color: $color-primary;
+            color: $color-primary;
+        }
+    }
+
+    &.btn-large{
+        font-size: 1.5rem;
+    }
+}

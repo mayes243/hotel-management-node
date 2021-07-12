@@ -1,0 +1,85 @@
+@layout('layouts.frontend')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<!----------------------
+---Login-Main--------
+----------------------->
+
+<section class="special-padding bg-bread long-banner" style="background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/frontend/img/bg-slider1.jpg);">
+    <div class="container"> <!-- Container .// -->
+
+
+        <div class="d-flex align-items-center justify-content-center">
+
+            <div class="register-main" id="login"> <!-- Login-Card .// -->
+
+                <div class="banner-wrap clearfix color-white">
+                    <h3 class="register-welcome float-left">Welcome Back</h3>
+                    <p class="register-btn-label float-right">Didn't Register Yet ? <a href="/register">Register Now</a></p>
+                </div>
+
+                <div class="register-body styled-form bord-bottom">
+
+                    @if(success_message.length > 0)
+                        <!-- Success Message .// -->
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{success_message}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!-- Success Message .// -->
+                    @endif
+
+                    @if(error_message.length > 0)
+                        <!-- Success Message .// -->
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{error_message}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!-- Success Message .// -->
+                    @endif
+
+                    <!-- LOGIN .// --->
+                    <form action="/login" method="POST">
+
+                        <label for="login-email">Email Address *</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            </div>
+                            <input type="email" id="login-email" class="form-control" placeholder="dummy@email.com" name="email" required>
+                        </div>
+
+                        <label for="login-password">Password *</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" id="login-password" class="form-control" name="password" placeholder="*******" required>
+                        </div>
+
+                        <div class="mt-4 clearfix">
+                            <button class="btn-main btn-primary btn-large mt-0 float-left" type="submit"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+                        </div>
+                    </form>
+                    <!-- LOGIN .// --->
+                </div>
+            </div> <!-- Login-Card .// -->
+
+        </div>
+    </div> <!-- Container .// -->
+</section>
+
+<!----------------------
+---Login-Main--------
+----------------------->
+
+@endsection

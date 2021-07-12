@@ -1,0 +1,92 @@
+@layout('layouts.frontend')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<!----------------------
+---User-Dashboard--------
+----------------------->
+
+<section class="user-dashboard special-padding bg-img" style="background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/frontend/img/bg-slider1.jpg);">
+    <div class="container"> <!-- Container .// -->
+        <div class="row"> <!-- Row .// -->
+            <div class="col-md-3"> <!-- Col .// -->
+                @include('partials.frontend.user-aside')
+            </div> <!-- Col .// -->
+            <div class="col-md-9"> <!-- Col .// -->
+
+                <!-- (dashboard-content) .// -->
+
+                <div class="dash-section-heading"> <!-- Section-Heading .// -->
+                    <h1>Welcome </h1>
+                </div> <!-- Section-Heading .// -->
+
+                @include('partials.frontend.messages')
+
+                <div class="dashboard-home">
+
+                    <div class="card"> <!-- Card .// -->
+                        <div class="card-header">
+                            <h4 class="card-title">My Orders:</h4>
+                        </div>
+                        <div class="card-body">
+
+                            <table class="table table-bordered dash-table table-responsive" id="data-table">
+                                <thead>
+                                    <tr>
+                                        <td>S.No.</td>
+                                        <td>Image</td>
+                                        <td>Dish</td>
+                                        <td>Price</td>
+                                        <td>Ordered Date</td>
+                                        <td>Actions</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+            
+                                    @each((order, i) in userOrders)
+                                    <tr> <!-- Table Row .// -->
+                                        <td>{{i + 1}}</td>
+                                        <td>
+                                            <div class="table-image-wrap">
+                                                <img data-src="/uploads/{{order.dish.image}}" alt="{{order.dish.name}}" class="lazyload">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{order.dish.name}}
+                                        </td>
+                                        <td class="package-booking-date">
+                                            Rs, {{order.dish.price}}
+                                        </td>
+                                        <td>
+                                            {{order.createdAt.toDateString()}}
+                                        </td>
+                                        <td class="actions">
+                                            <form action="/user/order/{{order._id}}?newMethod=DELETE" method="POST">
+                                                <button class="btn btn-danger btn-sm">Cancel Order</button>
+                                            </form>
+                                        </td>
+                                    </tr> <!-- Table Row .// -->
+                                    @endeach
+            
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div> <!-- Card .// -->
+                    
+                </div>
+
+            </div> <!-- Col .// -->
+        </div> <!-- Row .// -->
+    </div> <!-- Container .// -->
+</section>
+
+<!----------------------
+---User-Dashboard--------
+----------------------->
+
+@endsection

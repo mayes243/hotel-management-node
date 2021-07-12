@@ -1,0 +1,136 @@
+@layout('layouts.frontend')
+
+@section('title')
+    {{title}}
+@endsection
+
+@section('content')
+
+<!----------------------
+---Breadcrumb--------
+----------------------->
+
+<section class="bread-crumb bg-bread long-banner" style="background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(/frontend/img/bg-slider1.jpg);">
+    <div class="container"> <!-- Container .// -->
+        <h3 class="bread-crumb-title text-center">{{ title }}</h3>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb d-flex justify-content-center">
+                <li class="breadcrumb-item"><a href="/"><i class="fas fa-home"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+            </ol>
+        </nav>
+    </div> <!-- Container .// -->
+</section>
+
+<!----------------------
+---Breadcrumb--------
+----------------------->
+
+<!----------------------------
+-------Menu-Section-------
+----------------------------->
+
+<section class="menu-main common-padding" id="menu">
+    <div class="container"> <!-- Container .// -->
+
+        <div class="section-heading-wrap">
+            <p class="sub-heading" data-aos="fade-left">Fresh, Tasty Meals</p>
+            <h3 class="main-heading u-margin-bottom-small" data-aos="fade-right">Discover Our Menu</h3>
+            <p class="section-subtitle text-center normal-content" data-aos="fade-up">Steak In has the perfect place to enjoy fine food and great cocktails with excellent service, in comfortable atmospheric surroundings. We have a soft dining room, combined with an open kitchen, coffee take out bar and alovely awesome on site coffee roastery.</p>
+        </div>
+
+    </div> <!-- Container .// -->
+
+
+    @if(user)
+    <!----------------------------
+    -------Rec. Menu-------
+    ----------------------------->
+
+    <div class="recommended-menu mt-5">
+        <div class="container"> <!-- Container .// -->
+            <h3 class="heading text-center text-uppercase color-primary mb-3">Recommended Foods from: {{user.country}}</h3>
+            <div class="row"> <!-- Row .// -->
+                @each(item in specialMenu)
+                <div class="col-md-6"> <!-- Col .// -->
+                    <div class="special-wrapper" data-mh="special" data-aos="fade-down-right">
+
+                        <a href="/uploads/{{item.image}}" data-lightbox="special1" data-title="{{item.name}}">
+                            <div class="special-img-wrap img-hover">
+                                <img src="/uploads/{{item.image}}" alt="{{item.name}}">
+                                <div class="img-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="special-content-wrap">
+                            <div class="name-price clearfix">
+                                <h4 class="dish-name float-left">{{item.name}}</h4>
+                                <p class="dish-price float-right">NPR {{item.price}}</p>
+                            </div>
+
+                            <p class="dish-detail">{{item.description}}</p>
+                            <div class="pt-2">
+                                <form action="/user/order/{{item._id}}/{{user._id}}" method="POST">
+                                    <button class="btn-main btn-primary btn-sm">Order</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> <!-- Col .// -->
+                @endeach
+            </div> <!-- Row .// -->
+        </div> <!-- Container .// -->
+    </div>
+
+    <!----------------------------
+    -------Rec. Menu-------
+    ----------------------------->
+    @endif
+
+    <div class="searchBar">
+        <input id="search" type="text" placeholder="Search..">
+    </div>
+    <div class="iso-menu">
+        <ul>
+            <li class="active" data-filter="*">All</li>
+            @each(category in categories)
+            <li data-filter=".{{category.slug}}">{{category.title}}</li>
+            @endeach
+        </ul>
+    </div>
+
+    <div class="iso-item" data-aos="zoom-in-up">
+
+        @each(dish in dishes)
+        <div class="item {{dish.category.slug}}" data-mh="menu"> <!-- Iso-Item .// -->
+            <div class="menu-card-main">
+                <div class="manu-card-content main-box">
+                    <p class="dish-price text-center u-margin-bottom-mini">NPR {{dish.price}}</p>
+                    <h4 class="dish-name text-center u-margin-bottom-small">{{dish.name}}</h4>
+                    <p class="dish-detail text-center">{{dish.description}}</p>
+                    <div class="pt-2 text-center">
+                        <form action="/user/order/{{dish._id}}/{{user._id}}" method="POST">
+                            <button class="btn-main btn-primary btn-sm">Order</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="menu-card-image">
+                    <a href="/uploads/{{dish.image}}" data-lightbox="menu1" data-title="{{dish.name}}"><img src="/uploads/{{dish.image}}" alt="{{dish.name}}"></a>
+                </div>
+            </div>
+        </div> <!-- Iso-Item .// -->
+        @endeach
+
+    </div>
+
+</section>
+
+<!----------------------------
+-------Menu-Section-------
+----------------------------->
+
+@endsection

@@ -1,0 +1,66 @@
+/*-------------------------
+-----Bread-Crumb-----------
+------------------------*/
+
+.bg-bread{
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+.bread-crumb{
+    padding: 2rem;
+    padding-top: 2.5rem;
+
+    &.long-banner{
+        height: 30rem;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.bread-crumb-title{
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 2.3rem;
+    letter-spacing: 2px;
+    margin-bottom: .5rem;
+}
+
+.bread-crumb .breadcrumb{
+    background: transparent;
+    margin: 0;
+}
+
+.bread-crumb .breadcrumb-item{
+    color: $color-white;
+    font-size: 1.4rem;
+    margin: 0 .5rem;
+    position: relative;
+}
+
+.bread-crumb .breadcrumb-item:not(:first-child)::before{
+    content: '\f054';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    color: $color-white;
+    font-size: .6rem;
+    color: $color-primary-light;
+    position: absolute;
+    top: 55%;
+    left: -.5rem;
+    transform: translateY(-50%);
+}
+
+.bread-crumb .breadcrumb-item a{
+    color: $color-primary-light;
+
+    &:hover{
+        color: $color-white;
+    }
+}
+
+/*-------------------------
+-----Bread-Crumb-----------
+------------------------*/
