@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "sass": "sass --watch public/frontend/sass/main.scss:public/frontend/css/new.css",
     "siteSeeder": "node seed/SiteSeeder.js",
     "adminSeeder": "node seed/AdminSeeder.js"

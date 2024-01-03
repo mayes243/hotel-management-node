@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const bcrypt = require('bcryptjs');
+require('dotenv').config();
 
 // Local Imports
 const countries = require('./../utils/countriesData');
