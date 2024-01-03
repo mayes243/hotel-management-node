@@ -21,8 +21,6 @@ const backendRoutes = require("./routes/backendRoutes");
 // Init App
 const app = express();
 
-app.use(helmet());
-
 // Configure Mongoose to Connect to Database
 const db_connection = process.env.DB_CONNECTION;
 mongoose
@@ -62,6 +60,17 @@ admin.save((err) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:"],
+    },
+  })
+);
 
 // Setting Static Path
 app.use(express.static(`${__dirname}/public`));
