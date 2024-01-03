@@ -19,7 +19,7 @@ connect(db_connection, {
 
 const setting = new SiteSetting({
   title: "Online Cafe",
-  contactPerson: "Pawan Group",
+  contactPerson: "Online Cafe Group",
   email: "dummy@somedomain.com",
 });
 
