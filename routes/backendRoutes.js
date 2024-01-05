@@ -139,5 +139,6 @@ router.delete("/message/:id", backendControllers.deleteMessage);
 // order aceept
 router.post("/:id", backendControllers.updateOrder);
 router.get("/accept/order/:id", backendControllers.acceptOrder);
+router.get("/:action/order/:id/:orderName", backendControllers.updateOrderByAdmin);
 
 module.exports = router;

@@ -62,13 +62,17 @@
                                         <td>{{order.status}}</td>
                                         <td class="actions">
 
-                                           <div class="btn-group ">
+                                        <div class="btn-group ">
                                         <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Order Action
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item btn btn-info" href="/admin/accept/order/{{order._id}}">Accept</a>
-                                            <a class="dropdown-item btn btn-danger" href="">Reject</a>
+                                           @if(order.status === "pending")
+                                            <a class="dropdown-item btn btn-info" href="/admin/accept/order/{{order._id}}/{{order.dish.name}}">Accept</a>
+                                            <a class="dropdown-item btn btn-danger" href="/admin/decline/order/{{order._id}}/{{order.dish.name}}">Reject</a>
+                                            @else
+                                            <p class="dropdown-item btn btn-warning">No action</p>
+                                            @endif
                                         </div>
                                         </div>
                                     

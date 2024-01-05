@@ -56,6 +56,25 @@ exports.updateOrder = async (req, res) => {
     req.flash('success-message', `${Order.dish.name} has been Cancelled!`);
 };
 
+exports.updateOrderByAdmin = async (req, res) => {
+  const action = req.params.action;
+  const orderName = req.params.orderName;
+  await Order.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: {
+        status: action,
+      },
+    },
+    { new: true }
+  );
+  req.flash(
+    `${action == "decline" ? "error" : "success"}-message`,
+    `${orderName} has been ${action}!`
+  );
+  res.redirect("/admin/dashboard");
+};
+
 // accept order
 exports.acceptOrder = async (req, res) => {
 

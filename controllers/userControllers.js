@@ -150,8 +150,10 @@ exports.deleteOrder = async (req, res) => {
   const orderId = req.params.id;
 
   const deletedOrder = await Order.findByIdAndDelete(orderId).populate("dish");
-  req.flash("success-message", `${deletedOrder.dish.name} has been Cancelled!`);
-  res.redirect("/user/dashboard");
+  if (deletedOrder.dish) {
+    req.flash("success-message", `${deletedOrder.dish.name} has been Cancelled!`);
+    res.redirect("/user/dashboard");
+  }
 };
 
 // User Profile
