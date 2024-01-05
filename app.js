@@ -7,6 +7,7 @@ const flash = require("express-flash");
 const session = require("express-session");
 const methodOverrride = require("method-override");
 const passport = require("passport");
+const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const SiteSetting = require("./models/SiteSetting");
 const Admin = require("./models/Admin");
@@ -19,6 +20,8 @@ const backendRoutes = require("./routes/backendRoutes");
 
 // Init App
 const app = express();
+
+app.use(helmet());
 
 // Configure Mongoose to Connect to Database
 const db_connection = process.env.DB_CONNECTION;
