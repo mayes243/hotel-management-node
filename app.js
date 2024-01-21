@@ -75,7 +75,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  res.setHeader('Feature-Policy', 'geolocation "self"');
+  res.setHeader("Feature-Policy", 'geolocation "self"');
   next();
 });
 
