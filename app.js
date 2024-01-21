@@ -75,7 +75,7 @@ app.use(
 );
 
 app.use((req, res, next) => {
-  res.setHeader("Permissions-Policy", 'geolocation=(self "https://example.com"), microphone=()');
+  res.setHeader("Permissions-Policy", "geolocation=(), interest-cohort=()");
   next();
 });
 
