@@ -69,11 +69,15 @@ app.use(
         scriptSrc: ["'self'", "'unsafe-inline'"],
         styleSrc: ["'self'", "'unsafe-inline'"],
         imgSrc: ["'self'", "data:"],
-        geolocation: ["self"],
       },
     },
   })
 );
+
+app.use((req, res, next) => {
+  res.setHeader('Feature-Policy', 'geolocation "self"');
+  next();
+});
 
 // Setting Static Path
 app.use(express.static(`${__dirname}/public`));
